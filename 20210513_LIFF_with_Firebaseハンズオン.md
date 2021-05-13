@@ -5,7 +5,7 @@ categories: codelab,markdown
 environments: Web
 status: Draft
 feedback link: https://github.com/izumix03/liff_firebase_handson
-analytics account: Google Analytics ID
+analytics account: G-HWWEWWMWMD
 
 # LIFFアプリをFirebaseで動かすハンズオン
 
