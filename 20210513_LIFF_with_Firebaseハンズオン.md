@@ -90,6 +90,8 @@ https://console.firebase.google.com/
 | ---- | ---- |
 |  hosting  |  利用する  |
 
+Authentication も有効化しましょう。
+
 ### ローカルにコードを準備
 
 個人アカウントに切り替えるなど忘れずにしましょう。
