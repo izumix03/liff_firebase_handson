@@ -159,14 +159,16 @@ Duration: 0:05:00
 ### ローカルで起動
 まずはローカル起動しましょう。
 
-```shell:hosting
+```shell
+# hosting
 yarn start
 ```
 
 動きましたね。
 ではビルドしてhostingのemulatorも確認しましょう。
 
-```shell:hosting
+```shell
+# hosting
 yarn build
 firebase emulators:start
 ```
@@ -184,7 +186,8 @@ firebase deploy --only hosting
 ## LIFFアプリを実装準備
 Duration: 0:10:00
 
-```shell:hosting
+```shell
+# hosting
 rm -rf src/features/counter
 ```
 
@@ -192,7 +195,8 @@ rm -rf src/features/counter
 
 まず不要なコードを削除します。
 
-```shell:hosting
+```shell
+# hosting
 rm -rf src/features/counter
 rm -f src/App.test.tsx
 rm -f src/App.css
@@ -219,7 +223,8 @@ export const App = () => {
 }
 ```
 
-```shell:hosting
+```shell
+# hosting
 yarn add firebase axios @line/liff
 # 今回説明しませんが、デザインしたい方は以下もいれましょう
 # yarn add @material-ui/core @material-ui/icons
@@ -232,7 +237,8 @@ Duration: 0:05:00
 
 普通`.env` に記載して使うと思いますが、今回直接記載しています。
 
-```shell:hosting
+```shell
+# hosting
 mkdir src/configs
 touch src/configs/firebaseApp.ts
 ```
