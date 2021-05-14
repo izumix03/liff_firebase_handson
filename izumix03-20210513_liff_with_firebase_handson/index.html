@@ -455,7 +455,9 @@ exports.loginUsCentral = functions
 <p>channelIdはLINEログインのチャネルIDを入れて下さい。 <code>serviceAccountKey.json</code> はFirebaseコンソールからサービスアカウントのjsonを作成して保存し、リネームして使って下さい。</p>
 <p>※rewrite するためにはリージョンが us-central1 である必要があるので、 <code>.region(&#39;us-central1&#39;)</code>としています。</p>
 <h2 is-upgraded>デプロイ</h2>
-<pre><code language="language-shell" class="language-shell">firebase deploy --only functions
+<pre><code language="language-shell" class="language-shell"># functions
+yarn build
+firebase deploy --only functions
 </code></pre>
 
 

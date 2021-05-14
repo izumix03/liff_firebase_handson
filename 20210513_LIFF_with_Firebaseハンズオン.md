@@ -491,6 +491,8 @@ channelIdはLINEログインのチャネルIDを入れて下さい。
 
 ### デプロイ
 ```shell
+# functions
+yarn build
 firebase deploy --only functions
 ```
 
