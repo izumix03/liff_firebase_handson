@@ -418,8 +418,7 @@ const getProfile = async (accessToken: string) =&gt; {
   const response = await axiosInstance.get(&#39;/v2/profile&#39;, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
-    },
-    data: {},
+    }
   });
 
   if (response.status !== 200) {
@@ -436,7 +435,7 @@ exports.loginUsCentral = functions
     const { accessToken } = req.body;
 
     if (!accessToken) {
-        res.status(500).send({ error: &#39;invalid access&#39; });
+        res.status(400).send({ error: &#39;invalid access&#39; });
         return;
     }
 
