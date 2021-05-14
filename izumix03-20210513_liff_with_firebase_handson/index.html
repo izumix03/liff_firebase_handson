@@ -137,7 +137,10 @@
 exec $SHELL -l
 firebase login --reauth
 </code></pre>
-<pre><code language="language-shell" class="language-shell">firebase init --project {project名}
+<pre><code language="language-shell" class="language-shell"># コードを置きたディレクトリを作りましょう
+mkdir XXX
+cd XXX
+firebase init --project {project名}
 </code></pre>
 <p>まず使うサービスを聞かれるので、 Functions, Hosting, Emulators を選択します。</p>
 <pre><code language="language-shell" class="language-shell">? What language would you like to use to write Cloud Functions? TypeScript

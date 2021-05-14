@@ -101,6 +101,9 @@ firebase login --reauth
 ```
 
 ```shell
+# コードを置きたディレクトリを作りましょう
+mkdir XXX
+cd XXX
 firebase init --project {project名}
 ```
 
