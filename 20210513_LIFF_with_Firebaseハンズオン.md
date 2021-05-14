@@ -75,7 +75,7 @@ Duration: 0:10:00
 
 ### プロジェクト作成
 
-Bitkey の Google アカウントで Firebase のサイトを開き、プロジェクトを作りましょう。
+Google アカウントで Firebase のサイトを開き、プロジェクトを作りましょう。
 https://console.firebase.google.com/
 
 
