@@ -412,7 +412,7 @@ import * as functions from 'firebase-functions';
 import axios from 'axios';
 
 // サービス アカウント JSON ファイル
-import serviceAccount from './config/serviceAccountKey.json';
+import * as serviceAccount from './config/serviceAccountKey.json';
 
 const channelId = 'XXXX';
 
