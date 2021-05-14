@@ -179,7 +179,8 @@ i  Writing gitignore file to .gitignore...
 ✔  Firebase initialization complete!
 </code></pre>
 <h2 is-upgraded>hostingのコードをReactで用意</h2>
-<pre><code language="language-shell" class="language-shell">npx create-react-app hosting --template redux-typescript
+<pre><code language="language-shell" class="language-shell">rm -rf hosting
+npx create-react-app hosting --template redux-typescript
 </code></pre>
 
 
@@ -188,10 +189,12 @@ i  Writing gitignore file to .gitignore...
       <google-codelab-step label="動作確認とデプロイ" duration="5">
         <h2 is-upgraded>ローカルで起動</h2>
 <p>まずはローカル起動しましょう。</p>
-<pre><code language="language-shell:hosting" class="language-shell:hosting">yarn start
+<pre><code language="language-shell" class="language-shell"># hosting
+yarn start
 </code></pre>
 <p>動きましたね。 ではビルドしてhostingのemulatorも確認しましょう。</p>
-<pre><code language="language-shell:hosting" class="language-shell:hosting">yarn build
+<pre><code language="language-shell" class="language-shell"># hosting
+yarn build
 firebase emulators:start
 </code></pre>
 <p>動作確認できましたね。</p>
@@ -204,11 +207,13 @@ firebase emulators:start
       </google-codelab-step>
     
       <google-codelab-step label="LIFFアプリを実装準備" duration="10">
-        <pre><code language="language-shell:hosting" class="language-shell:hosting">rm -rf src/features/counter
+        <pre><code language="language-shell" class="language-shell"># hosting
+rm -rf src/features/counter
 </code></pre>
 <h3 is-upgraded>□不要なコードを編集</h3>
 <p>まず不要なコードを削除します。</p>
-<pre><code language="language-shell:hosting" class="language-shell:hosting">rm -rf src/features/counter
+<pre><code language="language-shell" class="language-shell"># hosting
+rm -rf src/features/counter
 rm -f src/App.test.tsx
 rm -f src/App.css
 </code></pre>
@@ -227,7 +232,8 @@ export const App = () =&gt; {
   );
 }
 </code></pre>
-<pre><code language="language-shell:hosting" class="language-shell:hosting">yarn add firebase axios @line/liff
+<pre><code language="language-shell" class="language-shell"># hosting
+yarn add firebase axios @line/liff
 # 今回説明しませんが、デザインしたい方は以下もいれましょう
 # yarn add @material-ui/core @material-ui/icons
 </code></pre>
@@ -238,7 +244,8 @@ export const App = () =&gt; {
       <google-codelab-step label="LIFFアプリを実装" duration="5">
         <h2 is-upgraded>Firebaseを使えるようにしましょう</h2>
 <p>普通<code>.env</code> に記載して使うと思いますが、今回直接記載しています。</p>
-<pre><code language="language-shell:hosting" class="language-shell:hosting">mkdir src/configs
+<pre><code language="language-shell" class="language-shell"># hosting
+mkdir src/configs
 touch src/configs/firebaseApp.ts
 </code></pre>
 <pre><code language="language-typescript:hosting/src/configs/firebaseApp.ts" class="language-typescript:hosting/src/configs/firebaseApp.ts">import firebase from &#39;firebase/app&#39;;

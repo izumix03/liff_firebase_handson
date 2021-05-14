@@ -150,6 +150,7 @@ i  Writing gitignore file to .gitignore...
 ### hostingのコードをReactで用意
 
 ```shell
+rm -rf hosting
 npx create-react-app hosting --template redux-typescript
 ```
 
