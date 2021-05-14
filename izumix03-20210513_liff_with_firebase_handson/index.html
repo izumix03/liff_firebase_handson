@@ -217,14 +217,14 @@ rm -rf src/features/counter
 rm -f src/App.test.tsx
 rm -f src/App.css
 </code></pre>
-<p>※テストなんかいらないという意味ではありません。  App.txsを書き換えるのですが、テストはここで説明しないので削除しています。</p>
+<p>※テストなんかいらないという意味ではありません。  App.tsxを書き換えるのですが、テストはここで説明しないので削除しています。</p>
+<p><code>hosting/src/app/store.ts</code></p>
 <pre><code language="language-diff:hosting/src/app/store.ts" class="language-diff:hosting/src/app/store.ts">-import counterReducer from &#39;../features/counter/counterSlice&#39;;
 
-//...
 -    counter: counterReducer,
 </code></pre>
+<p><code>hosting/src/App.tsx</code></p>
 <pre><code language="language-typescript:hosting/src/App.tsx" class="language-typescript:hosting/src/App.tsx">import React from &#39;react&#39;;
-import &#39;./App.css&#39;;
 
 export const App = () =&gt; {
   return (
@@ -248,6 +248,7 @@ yarn add firebase axios @line/liff
 mkdir src/configs
 touch src/configs/firebaseApp.ts
 </code></pre>
+<p><code>hosting/src/configs/firebaseApp.ts</code></p>
 <pre><code language="language-typescript:hosting/src/configs/firebaseApp.ts" class="language-typescript:hosting/src/configs/firebaseApp.ts">import firebase from &#39;firebase/app&#39;;
 import &#39;firebase/auth&#39;;
 
@@ -266,6 +267,7 @@ export const auth = firebaseApp.auth();
 <p><code>firebaseConfig</code> の内容はコンソールから確認できます。 Firebaseのコンソールから <code>プ</code>ロジェクトの設定 を進みましょう。 <code>�</code>�般 タグに <code>Firebase SDK snippet</code> があるので、 そこで <code>�</code>�成 を選択するとコピーできます。</p>
 <p>また、今回はやりませんが、Firestoreを使って単体テストも書く場合などは、 プロバイダーにするのがオススメです。</p>
 <h2 is-upgraded>ログインさせて表示を変更するロジック</h2>
+<p><code>hosting/src/App.tsx</code></p>
 <pre><code language="language-typescript:hosting/src/App.tsx" class="language-typescript:hosting/src/App.tsx">import React from &#39;react&#39;;
 
 export const App = () =&gt; {
@@ -281,9 +283,11 @@ export const App = () =&gt; {
 <p>本当はApp.tsxはルーティングと共通デザインだけ管理すると思いますが、 今回はここに直接書いてしまいます。</p>
 <p>まだ <code>useUser</code> を作っていないので現状はエラーします。</p>
 <p>では独自フックでログイン処理を書きましょう。</p>
-<pre><code language="language-shell:hosting" class="language-shell:hosting">mkdir src/hooks
+<pre><code language="language-shell:hosting" class="language-shell:hosting"># hosting
+mkdir src/hooks
 touch src/hooks/useUser.ts
 </code></pre>
+<p><code>hosting/src/hooks/useUser.ts</code></p>
 <pre><code language="language-typescript:hosting/src/hooks/useUser.ts" class="language-typescript:hosting/src/hooks/useUser.ts">import {useContext, useEffect, useRef, useState} from &#39;react&#39;;
 import firebase from &#39;firebase/app&#39;;
 import liff from &#39;@line/liff&#39;;
@@ -367,8 +371,10 @@ export const useUser = () =&gt; {
         <p>LINEのアクセストークンを受け取り、 LINEのプロフィールを取得し、 Firebase Authenticationのカスタムトークンを発行するという処理を行います。</p>
 <p>シンプルにするために何も工夫せず書きます。</p>
 <h2 is-upgraded>必要なライブラリをインストール</h2>
-<pre><code language="language-shell:functions" class="language-shell:functions">yarn add axios firebase-admin firebase-functions
+<pre><code language="language-shell:functions" class="language-shell:functions"># functions
+yarn add axios firebase-admin firebase-functions
 </code></pre>
+<p><code>functions/src/index.ts</code></p>
 <pre><code language="language-typescript:functions/src/index.ts" class="language-typescript:functions/src/index.ts">import * as admin from &#39;firebase-admin&#39;;
 import * as functions from &#39;firebase-functions&#39;;
 import axios from &#39;axios&#39;;

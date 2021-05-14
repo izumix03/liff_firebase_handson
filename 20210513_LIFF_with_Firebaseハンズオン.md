@@ -204,18 +204,18 @@ rm -f src/App.css
 ```
 
 ※テストなんかいらないという意味ではありません。
- App.txsを書き換えるのですが、テストはここで説明しないので削除しています。
+ App.tsxを書き換えるのですが、テストはここで説明しないので削除しています。
 
+`hosting/src/app/store.ts`
 ```diff:hosting/src/app/store.ts
 -import counterReducer from '../features/counter/counterSlice';
 
-//...
 -    counter: counterReducer,
 ```
 
+`hosting/src/App.tsx`
 ```typescript:hosting/src/App.tsx
 import React from 'react';
-import './App.css';
 
 export const App = () => {
   return (
@@ -244,6 +244,7 @@ mkdir src/configs
 touch src/configs/firebaseApp.ts
 ```
 
+`hosting/src/configs/firebaseApp.ts`
 ```typescript:hosting/src/configs/firebaseApp.ts
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -270,6 +271,7 @@ Firebaseのコンソールから `プロジェクトの設定` を進みまし�
 
 ### ログインさせて表示を変更するロジック
 
+`hosting/src/App.tsx`
 ```typescript:hosting/src/App.tsx
 import React from 'react';
 
@@ -292,10 +294,12 @@ export const App = () => {
 では独自フックでログイン処理を書きましょう。
 
 ```shell:hosting
+# hosting
 mkdir src/hooks
 touch src/hooks/useUser.ts
 ```
 
+`hosting/src/hooks/useUser.ts`
 ```typescript:hosting/src/hooks/useUser.ts
 import {useContext, useEffect, useRef, useState} from 'react';
 import firebase from 'firebase/app';
@@ -394,9 +398,11 @@ Firebase Authenticationのカスタムトークンを発行するという処理
 
 ### 必要なライブラリをインストール
 ```shell:functions
+# functions
 yarn add axios firebase-admin firebase-functions
 ```
 
+`functions/src/index.ts`
 ```typescript:functions/src/index.ts
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
