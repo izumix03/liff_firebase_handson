@@ -371,11 +371,6 @@ firebase.jsonを編集しましょう。
 +    ],
 +    "rewrites": [
 +      {
-+        "source": "**",
-+        "destination": "/index.html"
-+      },
-+      },
-+      {
 +        "source": "/login",
 +        "function": "loginUsCentral"
 +      }
@@ -412,7 +407,7 @@ import * as functions from 'firebase-functions';
 import axios from 'axios';
 
 // サービス アカウント JSON ファイル
-import * as serviceAccount from './config/serviceAccountKey.json';
+import serviceAccount from './config/serviceAccountKey.json';
 
 const channelId = 'XXXX';
 
@@ -488,6 +483,14 @@ channelIdはLINEログインのチャネルIDを入れて下さい。
 
 ※rewrite するためにはリージョンが us-central1 である必要があるので、
 `.region('us-central1')`としています。
+
+
+### tsconfig を編集
+以下を compilerOptions の配下に追加しましょう。
+``
+"resolveJsonModule": true,
+"esModuleInterop": true,
+```
 
 ### デプロイ
 ```shell

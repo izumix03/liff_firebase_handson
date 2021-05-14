@@ -57,7 +57,7 @@ exports.loginUsCentral = functions
     const { accessToken } = req.body;
 
     if (!accessToken) {
-        res.status(500).send({ error: 'invalid access' });
+        res.status(400).send({ error: 'invalid access' });
         return;
     }
 

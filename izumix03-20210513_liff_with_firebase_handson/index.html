@@ -350,11 +350,6 @@ export const useUser = () =&gt; {
 +    ],
 +    &#34;rewrites&#34;: [
 +      {
-+        &#34;source&#34;: &#34;**&#34;,
-+        &#34;destination&#34;: &#34;/index.html&#34;
-+      },
-+      },
-+      {
 +        &#34;source&#34;: &#34;/login&#34;,
 +        &#34;function&#34;: &#34;loginUsCentral&#34;
 +      }
@@ -382,7 +377,7 @@ import * as functions from &#39;firebase-functions&#39;;
 import axios from &#39;axios&#39;;
 
 // サービス アカウント JSON ファイル
-import * as serviceAccount from &#39;./config/serviceAccountKey.json&#39;;
+import serviceAccount from &#39;./config/serviceAccountKey.json&#39;;
 
 const channelId = &#39;XXXX&#39;;
 
@@ -454,8 +449,11 @@ exports.loginUsCentral = functions
 </code></pre>
 <p>channelIdはLINEログインのチャネルIDを入れて下さい。 <code>serviceAccountKey.json</code> はFirebaseコンソールからサービスアカウントのjsonを作成して保存し、リネームして使って下さい。</p>
 <p>※rewrite するためにはリージョンが us-central1 である必要があるので、 <code>.region(&#39;us-central1&#39;)</code>としています。</p>
-<h2 is-upgraded>デプロイ</h2>
-<pre><code language="language-shell" class="language-shell"># functions
+<h2 is-upgraded>tsconfig を編集</h2>
+<p>以下を compilerOptions の配下に追加しましょう。 &#34; &#34;resolveJsonModule&#34;: true, &#34;esModuleInterop&#34;: true,</p>
+<pre><code>### デプロイ
+```shell
+# functions
 yarn build
 firebase deploy --only functions
 </code></pre>
