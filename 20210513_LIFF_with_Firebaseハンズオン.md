@@ -364,18 +364,19 @@ firebase.jsonを編集しましょう。
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
--      },
+-    ],
++    ],
++    "rewrites": [
++      {
++        "source": "**",
++        "destination": "/index.html"
++      },
 +      },
 +      {
 +        "source": "/login",
 +        "function": "loginUsCentral"
 +      }
-    ]
++    ]
   },
 ```
 

@@ -344,18 +344,19 @@ export const useUser = () =&gt; {
       &#34;firebase.json&#34;,
       &#34;**/.*&#34;,
       &#34;**/node_modules/**&#34;
-    ],
-    &#34;rewrites&#34;: [
-      {
-        &#34;source&#34;: &#34;**&#34;,
-        &#34;destination&#34;: &#34;/index.html&#34;
--      },
+-    ],
++    ],
++    &#34;rewrites&#34;: [
++      {
++        &#34;source&#34;: &#34;**&#34;,
++        &#34;destination&#34;: &#34;/index.html&#34;
++      },
 +      },
 +      {
 +        &#34;source&#34;: &#34;/login&#34;,
 +        &#34;function&#34;: &#34;loginUsCentral&#34;
 +      }
-    ]
++    ]
   },
 </code></pre>
 <p>これでhostingを使ったフロントの処理は終わりです。</p>
