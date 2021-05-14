@@ -274,6 +274,7 @@ Firebaseのコンソールから プロジェクトの設定 を進みましょ�
 `hosting/src/App.tsx`
 ```typescript:hosting/src/App.tsx
 import React from 'react';
+import { useUser } from './hooks/useUser';
 
 export const App = () => {
   const [user] = useUser();
@@ -285,6 +286,8 @@ export const App = () => {
   )
 }
 ```
+
+`hosting/src/index.tsx' がエラーしていると思うので、修正して下さい。
 
 本当はApp.tsxはルーティングと共通デザインだけ管理すると思いますが、
 今回はここに直接書いてしまいます。

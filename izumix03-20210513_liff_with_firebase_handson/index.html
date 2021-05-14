@@ -269,6 +269,7 @@ export const auth = firebaseApp.auth();
 <h2 is-upgraded>ログインさせて表示を変更するロジック</h2>
 <p><code>hosting/src/App.tsx</code></p>
 <pre><code language="language-typescript:hosting/src/App.tsx" class="language-typescript:hosting/src/App.tsx">import React from &#39;react&#39;;
+import { useUser } from &#39;./hooks/useUser&#39;;
 
 export const App = () =&gt; {
   const [user] = useUser();
@@ -280,6 +281,7 @@ export const App = () =&gt; {
   )
 }
 </code></pre>
+<p>`hosting/src/index.tsx&#39; がエラーしていると思うので、修正して下さい。</p>
 <p>本当はApp.tsxはルーティングと共通デザインだけ管理すると思いますが、 今回はここに直接書いてしまいます。</p>
 <p>まだ <code>useUser</code> を作っていないので現状はエラーします。</p>
 <p>では独自フックでログイン処理を書きましょう。</p>
