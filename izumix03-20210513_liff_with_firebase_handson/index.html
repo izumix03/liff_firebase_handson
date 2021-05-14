@@ -27,12 +27,7 @@
                   environment="web"
                   feedback-link="https://github.com/izumix03/liff_firebase_handson">
     
-      <google-codelab-step label="ハンズオン準備" duration="0">
-        
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="LINE公式アカウント作成" duration="0">
+      <google-codelab-step label="LINE公式アカウント作成" duration="3">
         <h2 is-upgraded>LINE Developersへのアカウント登録</h2>
 <p><a href="https://account.line.biz/login?redirectUri=https%3A%2F%2Fdevelopers.line.biz%2Fconsole%2F" target="_blank">LINE Developers</a>コンソールで[コンソール]もしくは[ログイン]をクリックします。</p>
 <p class="image-container"><img src="img/e7e771d2ee8db9ad.png"></p>
@@ -41,7 +36,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="新規プロバイダー作成" duration="0">
+      <google-codelab-step label="新規プロバイダー作成" duration="3">
         <p>開発者の所属となるプロバイダーを作成します。プロバイダーの[作成]ボタンをクリック</p>
 <p>個人開発者ですのでプロバイダー名は本名でもニックネームでも任意で設定してください。</p>
 <p class="image-container"><img src="img/542bda589cc8fac3.png"></p>
@@ -49,18 +44,39 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="チャネル（LINEログイン）作成" duration="0">
+      <google-codelab-step label="チャネル（LINEログイン）作成" duration="3">
         <p>LIFFアプリのためにLINEログインチャネルを作成します。</p>
 <p class="image-container"><img src="img/e113fd310fb5ba95.png"></p>
 <table>
-<tr><td colspan="1" rowspan="1"><p>チェネルの種類</p>
-</td><td colspan="1" rowspan="1"><p>TH</p>
+<tr><td colspan="1" rowspan="1"><p>チャネルの種類</p>
+</td><td colspan="1" rowspan="1"><p>LINEログイン</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>TD</p>
-</td><td colspan="1" rowspan="1"><p>TD</p>
+<tr><td colspan="1" rowspan="1"><p>プロバイダー</p>
+</td><td colspan="1" rowspan="1"><p>handson(任意)</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>TD</p>
-</td><td colspan="1" rowspan="1"><p>TD</p>
+<tr><td colspan="1" rowspan="1"><p>地域</p>
+</td><td colspan="1" rowspan="1"><p>日本</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>チャネルアイコン</p>
+</td><td colspan="1" rowspan="1"><p>(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>チャネル名</p>
+</td><td colspan="1" rowspan="1"><p>handsonログイン(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>チャネル説明</p>
+</td><td colspan="1" rowspan="1"><p>handsonログイン(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>アプリタイプ</p>
+</td><td colspan="1" rowspan="1"><p>ウェブアプリ</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>メールアドレス</p>
+</td><td colspan="1" rowspan="1"><p>(自分のメールアドレス)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>プライバシーポリシーURL</p>
+</td><td colspan="1" rowspan="1"><p>(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>サービス利用規約URL</p>
+</td><td colspan="1" rowspan="1"><p>(任意)</p>
 </td></tr>
 </table>
 
@@ -68,7 +84,370 @@
       </google-codelab-step>
     
       <google-codelab-step label="LIFFの設定" duration="3">
-        
+        <p>LIFFの設定を行います。 <img src="img/bdb88d9834d8ad76.png"></p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>LIFFアプリ名</p>
+</td><td colspan="1" rowspan="1"><p>handson-liff(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>サイズ</p>
+</td><td colspan="1" rowspan="1"><p>Full(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>エンドポイントURL</p>
+</td><td colspan="1" rowspan="1"><p>https://example.com (任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Scope</p>
+</td><td colspan="1" rowspan="1"><p>profile</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>ボットリンク機能</p>
+</td><td colspan="1" rowspan="1"><p>On (Aggressive)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>オプション</p>
+</td><td colspan="1" rowspan="1"><p>(なし)</p>
+</td></tr>
+</table>
+<p>エンドポイントURLは後ほど書き換えます。</p>
+<p>Scope ではIDトークン使いたい場合 <code>openid</code> も選択しましょう。 ※今回のハンズオンでは <code>profile</code> しか使いません。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Firebase 設定" duration="10">
+        <h2 is-upgraded>プロジェクト作成</h2>
+<p>Bitkey の Google アカウントで Firebase のサイトを開き、プロジェクトを作りましょう。 https://console.firebase.google.com/</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>プロジェクト名</p>
+</td><td colspan="1" rowspan="1"><p>handson-liff(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>このプロジェクトで Google アナリティクスを有効にする</p>
+</td><td colspan="1" rowspan="1"><p>無効</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Webアプリを追加</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>アプリのニックネーム</p>
+</td><td colspan="1" rowspan="1"><p>handson-liff(任意)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>hosting</p>
+</td><td colspan="1" rowspan="1"><p>利用する</p>
+</td></tr>
+</table>
+<h2 is-upgraded>ローカルにコードを準備</h2>
+<p>個人アカウントに切り替えるなど忘れずにしましょう。</p>
+<pre><code language="language-shell" class="language-shell">yarn global add firebase-tools
+exec $SHELL -l
+firebase login --reauth
+</code></pre>
+<pre><code language="language-shell" class="language-shell">firebase init --project {project名}
+</code></pre>
+<p>まず使うサービスを聞かれるので、 Functions, Hosting, Emulators を選択します。</p>
+<pre><code language="language-shell" class="language-shell">? What language would you like to use to write Cloud Functions? TypeScript
+? Do you want to use ESLint to catch probable bugs and enforce style? Yes
+✔  Wrote functions/package.json
+✔  Wrote functions/.eslintrc.js
+✔  Wrote functions/tsconfig.json
+✔  Wrote functions/src/index.ts
+✔  Wrote functions/.gitignore
+? Do you want to install dependencies with npm now? No
+
+=== Hosting Setup
+
+Your public directory is the folder (relative to your project directory) that
+will contain Hosting assets to be uploaded with firebase deploy. If you
+have a build process for your assets, use your build&#39;s output directory.
+
+? What do you want to use as your public directory? hosting/build
+? Configure as a single-page app (rewrite all urls to /index.html)? No
+? Set up automatic builds and deploys with GitHub? No
+
+=== Emulators Setup
+? Which Firebase emulators do you want to set up? Press Space to select emulators, then Enter to con
+firm your choices. Authentication Emulator, Functions Emulator, Hosting Emulator
+? Which port do you want to use for the auth emulator? 9099
+? Which port do you want to use for the functions emulator? 5001
+? Which port do you want to use for the hosting emulator? 5000
+? Would you like to enable the Emulator UI? Yes
+? Which port do you want to use for the Emulator UI (leave empty to use any available port)? 
+? Would you like to download the emulators now? No
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+i  Writing gitignore file to .gitignore...
+
+✔  Firebase initialization complete!
+</code></pre>
+<h2 is-upgraded>hostingのコードをReactで用意</h2>
+<pre><code language="language-shell" class="language-shell">npx create-react-app hosting --template redux-typescript
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="動作確認とデプロイ" duration="5">
+        <h2 is-upgraded>ローカルで起動</h2>
+<p>まずはローカル起動しましょう。</p>
+<pre><code language="language-shell:hosting" class="language-shell:hosting">yarn start
+</code></pre>
+<p>動きましたね。 ではビルドしてhostingのemulatorも確認しましょう。</p>
+<pre><code language="language-shell:hosting" class="language-shell:hosting">yarn build
+firebase emulators:start
+</code></pre>
+<p>動作確認できましたね。</p>
+<p>ではデプロイしてみましょう。</p>
+<pre><code language="language-shell" class="language-shell">firebase deploy --only hosting
+</code></pre>
+<p>動作確認できましたね。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="LIFFアプリを実装準備" duration="10">
+        <pre><code language="language-shell:hosting" class="language-shell:hosting">rm -rf src/features/counter
+</code></pre>
+<h3 is-upgraded>□不要なコードを編集</h3>
+<p>まず不要なコードを削除します。</p>
+<pre><code language="language-shell:hosting" class="language-shell:hosting">rm -rf src/features/counter
+rm -f src/App.test.tsx
+rm -f src/App.css
+</code></pre>
+<p>※テストなんかいらないという意味ではありません。  App.txsを書き換えるのですが、テストはここで説明しないので削除しています。</p>
+<pre><code language="language-diff:hosting/src/app/store.ts" class="language-diff:hosting/src/app/store.ts">-import counterReducer from &#39;../features/counter/counterSlice&#39;;
+
+//...
+-    counter: counterReducer,
+</code></pre>
+<pre><code language="language-typescript:hosting/src/App.tsx" class="language-typescript:hosting/src/App.tsx">import React from &#39;react&#39;;
+import &#39;./App.css&#39;;
+
+export const App = () =&gt; {
+  return (
+    &lt;div className=&#34;App&#34;&gt;&lt;/div&gt;
+  );
+}
+</code></pre>
+<pre><code language="language-shell:hosting" class="language-shell:hosting">yarn add firebase axios @line/liff
+# 今回説明しませんが、デザインしたい方は以下もいれましょう
+# yarn add @material-ui/core @material-ui/icons
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="LIFFアプリを実装" duration="5">
+        <h2 is-upgraded>Firebaseを使えるようにしましょう</h2>
+<p>普通<code>.env</code> に記載して使うと思いますが、今回直接記載しています。</p>
+<pre><code language="language-shell:hosting" class="language-shell:hosting">mkdir src/configs
+touch src/configs/firebaseApp.ts
+</code></pre>
+<pre><code language="language-typescript:hosting/src/configs/firebaseApp.ts" class="language-typescript:hosting/src/configs/firebaseApp.ts">import firebase from &#39;firebase/app&#39;;
+import &#39;firebase/auth&#39;;
+
+const firebaseConfig = {
+  apiKey: &#34;XXXX&#34;,
+  authDomain: &#34;XXXX&#34;,
+  projectId: &#34;XXXX&#34;,
+  storageBucket: &#34;XXXX&#34;,
+  messagingSenderId: &#34;XXXX&#34;,
+  appId: &#34;XXXX&#34;
+};
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const auth = firebaseApp.auth();
+</code></pre>
+<p><code>firebaseConfig</code> の内容はコンソールから確認できます。 Firebaseのコンソールから <code>プ</code>ロジェクトの設定 を進みましょう。 <code>�</code>�般 タグに <code>Firebase SDK snippet</code> があるので、 そこで <code>�</code>�成 を選択するとコピーできます。</p>
+<p>また、今回はやりませんが、Firestoreを使って単体テストも書く場合などは、 プロバイダーにするのがオススメです。</p>
+<h2 is-upgraded>ログインさせて表示を変更するロジック</h2>
+<pre><code language="language-typescript:hosting/src/App.tsx" class="language-typescript:hosting/src/App.tsx">import React from &#39;react&#39;;
+
+export const App = () =&gt; {
+  const [user] = useUser();
+
+  return (
+    &lt;&gt;
+      { user? (&lt;p&gt;認証完了&lt;/p&gt;) : (&lt;p&gt;未認証&lt;/p&gt;) }
+    &lt;/&gt;
+  )
+}
+</code></pre>
+<p>本当はApp.tsxはルーティングと共通デザインだけ管理すると思いますが、 今回はここに直接書いてしまいます。</p>
+<p>まだ <code>useUser</code> を作っていないので現状はエラーします。</p>
+<p>では独自フックでログイン処理を書きましょう。</p>
+<pre><code language="language-shell:hosting" class="language-shell:hosting">mkdir src/hooks
+touch src/hooks/useUser.ts
+</code></pre>
+<pre><code language="language-typescript:hosting/src/hooks/useUser.ts" class="language-typescript:hosting/src/hooks/useUser.ts">import {useContext, useEffect, useRef, useState} from &#39;react&#39;;
+import firebase from &#39;firebase/app&#39;;
+import liff from &#39;@line/liff&#39;;
+import axios from &#39;axios&#39;;
+import { auth } from &#39;../configs/firebaseApp&#39;;
+
+const liffId = &#39;XXXXX&#39;;
+
+export const useUser = () =&gt; {
+  const [user, setUser] = useState&lt;firebase.User | null&gt;(null);
+
+  useEffect(() =&gt; {
+    let unmount = false;
+
+    const unSub = auth.onAuthStateChanged(async authUser =&gt; {
+      await liff.init({ liffId });
+      if (!liff.isLoggedIn()) {
+        await liff.login()
+        return
+      }
+
+      if (authUser &amp;&amp; !unmount) {
+        setUser(authUser)
+        return
+      }
+
+      const accessToken = liff.getAccessToken();
+      if (!accessToken) return;
+
+      const result = await axios.post(&#39;/login&#39;, { accessToken });
+      if (result.data.error) {
+        console.error(&#39;functions error&#39;, result.data.error);
+        return
+      }
+
+      const res = await auth!.signInWithCustomToken(result.data.token);
+      if (!unmount) setUser(res.user);
+    })
+
+    return () =&gt; {
+      unmount = true;
+      unSub();
+    }
+  }, []);
+
+  return [user] as const;
+}
+</code></pre>
+<p><code>liffId</code> というのが出てきました。 LINEログインを使うために必要なので先程作ったLIFFアプリの画面からコピーしてきましょう。</p>
+<h2 is-upgraded>firebase.json を編集</h2>
+<p>axiosで <code>/login</code> にアクセスしていますね。 hostingのパスをfunctionsに向けて処理させるために書いています。 firebase.jsonを編集しましょう。</p>
+<pre><code language="language-diff:firebase.json" class="language-diff:firebase.json">  &#34;hosting&#34;: {
+    &#34;public&#34;: &#34;hosting/build&#34;,
+    &#34;ignore&#34;: [
+      &#34;firebase.json&#34;,
+      &#34;**/.*&#34;,
+      &#34;**/node_modules/**&#34;
+    ],
+    &#34;rewrites&#34;: [
+      {
+        &#34;source&#34;: &#34;**&#34;,
+        &#34;destination&#34;: &#34;/index.html&#34;
+-      },
++      },
++      {
++        &#34;source&#34;: &#34;/login&#34;,
++        &#34;function&#34;: &#34;loginUsCentral&#34;
++      }
+    ]
+  },
+</code></pre>
+<p>これでhostingを使ったフロントの処理は終わりです。</p>
+<h2 is-upgraded>デプロイ</h2>
+<pre><code language="language-shell" class="language-shell">firebase deploy --only hosting
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Firebase Functionsを実装" duration="5">
+        <p>LINEのアクセストークンを受け取り、 LINEのプロフィールを取得し、 Firebase Authenticationのカスタムトークンを発行するという処理を行います。</p>
+<p>シンプルにするために何も工夫せず書きます。</p>
+<h2 is-upgraded>必要なライブラリをインストール</h2>
+<pre><code language="language-shell:functions" class="language-shell:functions">yarn add axios firebase-admin firebase-functions
+</code></pre>
+<pre><code language="language-typescript:functions/src/index.ts" class="language-typescript:functions/src/index.ts">import * as admin from &#39;firebase-admin&#39;;
+import * as functions from &#39;firebase-functions&#39;;
+import axios from &#39;axios&#39;;
+
+// サービス アカウント JSON ファイル
+import serviceAccount from &#39;./config/serviceAccountKey.json&#39;;
+
+const channelId = &#39;XXXX&#39;;
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+});
+
+const axiosInstance = axios.create({
+  baseURL: &#39;https://api.line.me&#39;,
+  responseType: &#39;json&#39;,
+});
+
+const verifyToken = async (accessToken: string) =&gt; {
+  const response = await axiosInstance.get(&#39;/oauth2/v2.1/verify&#39;, {
+    params: { access_token: accessToken },
+  });
+
+  if (response.status !== 200) {
+    console.error(response.data.error_description);
+    throw new Error(response.data.error);
+  }
+
+  if (response.data.client_id !== channelId) {
+    throw new Error(&#39;client_id does not match.&#39;);
+  }
+
+  if (response.data.expires_in &lt; 0) {
+    throw new Error(&#39;access token is expired.&#39;);
+  }
+};
+
+const getProfile = async (accessToken: string) =&gt; {
+  const response = await axiosInstance.get(&#39;/v2/profile&#39;, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    data: {},
+  });
+
+  if (response.status !== 200) {
+    console.error(response.data.error_description);
+    throw new Error(response.data.error);
+  }
+
+  return response.data;
+};
+
+exports.loginUsCentral = functions
+  .region(&#39;us-central1&#39;)
+  .https.onRequest(async (req, res) =&gt; {
+    const { accessToken } = req.body;
+
+    if (!accessToken) {
+        res.status(500).send({ error: &#39;invalid access&#39; });
+        return;
+    }
+
+    try {
+      await verifyToken(accessToken);
+      const profile = await getProfile(accessToken);
+      const token = await admin.auth().createCustomToken(profile.userId);
+
+      res.send({ token });
+    } catch (e) {
+      console.error(JSON.stringify(e, null, &#39;  &#39;));
+
+      res.status(500).send({ error: e.message });
+    }
+  });
+</code></pre>
+<p>channelIdはLINEログインのチャネルIDを入れて下さい。 <code>serviceAccountKey.json</code> はFirebaseコンソールからサービスアカウントのjsonを作成して保存し、リネームして使って下さい。</p>
+<p>※rewrite するためにはリージョンが us-central1 である必要があるので、 <code>.region(&#39;us-central1&#39;)</code>としています。</p>
+<h2 is-upgraded>デプロイ</h2>
+<pre><code language="language-shell" class="language-shell">firebase deploy --only functions
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="エンドポイント設定" duration="0">
+        <p>LIFFのエンドポイントURLをhostingのURLに書き換えましょう！</p>
+<p>これで終了です！</p>
+
 
       </google-codelab-step>
     

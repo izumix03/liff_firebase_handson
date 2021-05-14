@@ -368,6 +368,11 @@ firebase.jsonを編集しましょう。
 
 これでhostingを使ったフロントの処理は終わりです。
 
+### デプロイ
+```shell
+firebase deploy --only hosting
+```
+
 ## Firebase Functionsを実装
 Duration: 0:05:00
 
@@ -463,3 +468,15 @@ exports.loginUsCentral = functions
 channelIdはLINEログインのチャネルIDを入れて下さい。
 `serviceAccountKey.json` はFirebaseコンソールからサービスアカウントのjsonを作成して保存し、リネームして使って下さい。
 
+※rewrite するためにはリージョンが us-central1 である必要があるので、
+`.region('us-central1')`としています。
+
+### デプロイ
+```shell
+firebase deploy --only functions
+```
+
+## エンドポイント設定
+LIFFのエンドポイントURLをhostingのURLに書き換えましょう！
+
+これで終了です！
