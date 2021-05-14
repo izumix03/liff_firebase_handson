@@ -263,8 +263,8 @@ export const auth = firebaseApp.auth();
 ```
 
 `firebaseConfig` の内容はコンソールから確認できます。
-Firebaseのコンソールから `プロジェクトの設定` を進みましょう。
-全般 タグに `Firebase SDK snippet` があるので、 そこで `構成` を選択するとコピーできます。
+Firebaseのコンソールから プロジェクトの設定 を進みましょう。
+全般 タグに `Firebase SDK snippet` があるので、 そこで 構成 を選択するとコピーできます。
 
 また、今回はやりませんが、Firestoreを使って単体テストも書く場合などは、
 プロバイダーにするのがオススメです。
