@@ -264,7 +264,7 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const auth = firebaseApp.auth();
 </code></pre>
-<p><code>firebaseConfig</code> の内容はコンソールから確認できます。 Firebaseのコンソールから プロジェクトの設定 を進みましょう。 全般 タグに <code>Firebase SDK snippet</code> があるので、 そこで 構成 を選択するとコピーできます。</p>
+<p><code>firebaseConfig</code> の内容はコンソールから確認できます。 Firebaseのコンソールから プロジェクトの設定 を進みましょう。 全般 タグの下の方にSDKの設定と構成という項目があるので、 そこで構成を選択するとコピーできます。</p>
 <p>また、今回はやりませんが、Firestoreを使って単体テストも書く場合などは、 プロバイダーにするのがオススメです。</p>
 <h2 is-upgraded>ログインさせて表示を変更するロジック</h2>
 <p><code>hosting/src/App.tsx</code></p>
@@ -324,7 +324,6 @@ export const useUser = () =&gt; {
       }
 
       const res = await auth!.signInWithCustomToken(result.data.token);
-      if (!unmount) setUser(res.user);
     })
 
     return () =&gt; {
